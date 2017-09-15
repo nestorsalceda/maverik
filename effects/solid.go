@@ -17,7 +17,7 @@ func Solid(ledStrip devices.LedStrip, color string) {
 	g := byte(rgb >> 8)
 	b := byte(rgb)
 
-	buf := make([]byte, 144*3)
+	buf := make([]byte, ledStrip.AmountOfLeds()*3)
 	for i := 0; i < len(buf); i += 3 {
 		buf[i] = r
 		buf[i+1] = g

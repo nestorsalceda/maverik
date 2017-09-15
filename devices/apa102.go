@@ -8,12 +8,12 @@ import (
 	"periph.io/x/periph/host"
 )
 
-const numberOfLeds = 144
+const amountOfLeds = 144
 const intensity = 100
 const temperature = 5000
 
 type APA102 struct {
-	numberOfLeds int
+	amountOfLeds int
 	device       *apa102.Dev
 }
 
@@ -28,17 +28,21 @@ func NewAPA102() LedStrip {
 	}
 	s.LimitSpeed(8000000)
 
-	device, err := apa102.New(s, numberOfLeds, intensity, temperature)
+	device, err := apa102.New(s, amountOfLeds, intensity, temperature)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	return &APA102{
-		numberOfLeds,
+		amountOfLeds,
 		device,
 	}
 }
 
 func (d *APA102) Write(leds []byte) (int, error) {
 	return d.device.Write(leds)
+}
+
+func (d *APA102) AmountOfLeds() int {
+	return d.amountOfLeds
 }
