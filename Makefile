@@ -2,7 +2,7 @@ GODEPS = \
 		github.com/gorilla/handlers \
 		github.com/gorilla/mux \
 		periph.io/x/periph \
-		github.com/vektra/mockery \
+		github.com/vektra/mockery/.../ \
 
 TEST?=$(shell go list ./... | grep -v vendor)
 
