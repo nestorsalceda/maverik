@@ -7,7 +7,7 @@ GODEPS = \
 TEST?=$(shell go list ./... | grep -v vendor)
 
 
-all: test
+all: build
 
 test: mocks
 	go test -i $(TEST)

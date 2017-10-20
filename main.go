@@ -13,7 +13,6 @@ import (
 func main() {
 	router := maverik_http.NewRouter()
 
-	log.Fatal(
-		http.ListenAndServe(":4567",
-			handlers.CombinedLoggingHandler(os.Stdout, router)))
+	log.Fatal(http.ListenAndServe(":4567", handlers.CORS()(
+		handlers.CombinedLoggingHandler(os.Stdout, router))))
 }
